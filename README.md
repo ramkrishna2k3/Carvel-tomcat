@@ -5,13 +5,30 @@ Tomcat is an open-source web server designed to host and run Java-based web appl
 ## Parameters
 Configuration Reference
 
-### Tomcat parameters
+You can configure the following:
+
+### Tomcat Image parameters
 
 |Parameter|Description|Type|Default|
 |---------|-----------|----|-------|
 |pullPolicy|Tomcat image pull policy|String|IfNotPresent| 
+
+### Tomcat Configuration parameters
+
+|Parameter|Description|Type|Default|
+|---------|-----------|----|-------|
+|tomcatUsername|tomcat username|string|user|
+|tomcatPassword|Tomcat userpassword|string|mypassword|
+
+### Tomcat Deployment parameters
+
+|Parameter|Description|Type|Default|
+|---------|-----------|----|-------|
 |Replicas|Specify number of Tomcat replicas|integer|1|
 |containerPorts.http|HTTP port to expose at container level|integer|8080|
+|resources.limits|The resources limits for the Tomcat container|integer|{}|
+|resources.request|The requested resources for the Tomcat container|integer|{}|
+|container.env.tomcatHttp|Set Tomcat HTTP External port|integer|80|
 |containerSecurityContext.runAsUser|User ID for the Tomcat container|integer|1001|
 |containerSecurityContext.runAsNonRoot|Force user to be root in Tomcat container|String|TRUE|
 |livenessProbe.initialDelaySeconds|Initial delay seconds for livenessProbe|integer|120|
@@ -31,6 +48,13 @@ Configuration Reference
 |---------|-----------|----|-------|
 |ingress.enabled|Enable ingress controller resource|String|FALSE
 |ingress.pathType|Ingress path type|string|ImplementationSpecific|
+
+### Persistence Parameters
+
+|Parameter|Description|Type|Default|
+|---------|-----------|----|-------|
+|persistentVolumeClaim.storage|Tomcat persistent volume size|string|8Gi|
+|persistentVolumeClaim.storageClassName|Tomcat storage class name|string|default|
 
 ### Metrics parameters
 |Parameter|Description|Type|Default|
